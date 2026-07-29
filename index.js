@@ -58,8 +58,10 @@ app.post("/webhook", async (req, res) => {
     }
 
     const from = message.from;
-    const text = message.text?.body?.trim();
+  const text = message.text?.body?.trim();
 
+console.log("Message received:", text);
+console.log("From:", from);
     let reply = "";
 
     switch (text) {
@@ -141,8 +143,12 @@ Please reply with a number:
 5️⃣ Free Trial
 6️⃣ Current Offers`;
     }
+console.log("Sending reply:", reply);
 
-    await sendMessage(from, reply);
+await sendMessage(from, reply);
+
+console.log("Reply sent successfully");
+   
 
     res.sendStatus(200);
   } catch (err) {
